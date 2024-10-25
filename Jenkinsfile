@@ -18,7 +18,8 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'samin-docker', variable: 'samindocker')]) {
                     script {
-                        sh "docker login -u adomicarts -p %samindocker%"
+                        sh "docker build -t adomicarts/nodeapp-cuban:${env.BUILD_NUMBER} ."
+
                     }
                 }
             }
